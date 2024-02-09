@@ -1,0 +1,119 @@
+#include <LiquidCrystal.h>//import the LCD library
+
+LiquidCrystal lcd(5, 6, 7, 8, 9, 13);// Pins used for RS,E,D4,D5,D6,D7
+
+const int Pout=10;
+const int zc= 2;
+
+int k;
+
+
+
+
+#define inc_sw 12
+#define dec_sw 11
+
+int incPrev, decPrev;
+
+
+int Count = 150;
+int L = 1;
+
+#define SW 4
+
+void setup() 
+{
+  pinMode(Pout, OUTPUT);
+  pinMode(zc, INPUT);
+//  pinMode(inc, INPUT);
+  pinMode(SW, INPUT);
+  pinMode(inc_sw, INPUT);
+  pinMode(dec_sw, INPUT);
+  digitalWrite(SW, HIGH);
+   digitalWrite(inc_sw, HIGH);
+    digitalWrite(dec_sw, HIGH);
+
+
+  lcd.begin(16,2);//LCD 16x2 initialization
+  lcd.setCursor(0,0);
+  lcd.print("   Thyrister  ");
+  lcd.setCursor(0,1);
+  lcd.print("   Charger    ");  
+   delay(3000);
+ 
+}
+
+
+
+void loop() 
+{
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print(" Thy. Charger ");
+  lcd.setCursor(0,1);
+  lcd.print("Level = "); 
+ 
+delay(100);
+
+int inc = digitalRead(inc_sw);
+int dec = digitalRead(dec_sw);
+
+
+if((inc == LOW) && (Count < 750) && (inc != incPrev ))
+    {
+      delay(100);
+      Count = Count + 100;
+      L = L + 1;
+    }
+
+
+     //Decrement
+ if((dec == LOW) && (Count >150) && (dec != decPrev))
+    {
+      delay(100);
+       Count = Count - 100;
+       L = L - 1;
+    }
+
+
+  lcd.setCursor(8,1);
+  lcd.print(L); 
+  delay(100);
+
+
+ if (!digitalRead(SW))  
+ {
+  //k=analogRead(A0);
+  k=Count;
+  k=map(k,0,1023,8500,0);      
+  digitalWrite(Pout,LOW);
+  attachInterrupt(digitalPinToInterrupt(zc), angle, FALLING);
+ }
+
+  else if (digitalRead(SW)) 
+  { 
+
+       detachInterrupt(0); // disable power
+       lcd.setCursor(11,0);
+       lcd.print("OFF   "); 
+       lcd.setCursor(0,1);
+       lcd.print("                "); 
+
+     }
+
+     
+  incPrev = inc;
+   decPrev = dec;
+
+ } 
+
+ 
+
+
+void angle() 
+{
+  delayMicroseconds(k);
+  digitalWrite(Pout,HIGH);
+  delayMicroseconds(500);
+  digitalWrite(Pout,LOW); 
+}
