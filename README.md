@@ -26,7 +26,7 @@ The project aims to create an industrial battery charger using a thyristor for c
 - Obtaining a regulated output of 110V DC with output regulation ≤ 2.5%.
 
 ## Block Diagram
-![Block Diagram](images/block_diagram.png)
+![Block Diagram](Block_Diagram.png)
 
 ## Advantages & Applications
 - Elimination of the need for different chargers for various battery voltages.
