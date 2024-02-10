@@ -42,9 +42,9 @@ The emergency battery charger, connected in parallel to the main battery charger
 ![Circuit Diagram](Circuit_Diagram.png)
 
 ### Final Output Images
-![Output Image 1](img1.png)
-![Output Image 2](img2.png)
-![Output Image 2](img3.png)
+![Output Image 1](img1.jpg)
+![Output Image 2](img2.jpg)
+![Output Image 2](img3.jpg)
 
 ### Project Report
 [Download Project Report](documents/project_report.pdf)
