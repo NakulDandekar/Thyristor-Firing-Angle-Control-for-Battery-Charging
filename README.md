@@ -47,7 +47,7 @@ The emergency battery charger, connected in parallel to the main battery charger
 ![Output Image 2](img3.jpg)
 
 ### Project Report
-[Download Project Report](Project Report.pdf)
+[Download Project Report](ProjectReport.pdf)
 
 ### Presentation
 [View Project Presentation](documents/project_presentation.pdf)
