@@ -15,7 +15,7 @@ This repository contains the documentation and resources for our project on Thyr
   - [Final Output Images](#final-output-images)
   - [Project Report](#project-report)
   - [Presentation](#presentation)
-- [License](LICENSE)
+
 
 ## Introduction
 The project aims to create an industrial battery charger using a thyristor for controlling the flow of current. It involves detecting the zero-crossing point of the waveform, providing delay in triggering control to a TRIAC through a microcontroller, and supplying power to the load via TRIAC and a linked rectifier.
